@@ -38,7 +38,7 @@ jobs:
         run: npm ci
 
       - name: Build shell
-        run: npx ng build shell
+        run: npx ng build shell --base-href /mfe-demo/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
