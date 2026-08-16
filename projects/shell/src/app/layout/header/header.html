@@ -13,14 +13,13 @@
         <a routerLink="/orders" routerLinkActive="active">Orders</a>
 
         <a routerLink="/admin" routerLinkActive="active">Admin</a>
+        <a routerLink="/login">Login</a>
 
     </nav>
 
     <div class="profile">
 
-        <img
-            src="https://i.pravatar.cc/40"
-            alt="">
+        <img src="https://i.pravatar.cc/40" alt="">
 
         <span>Welcome {{ auth.currentUser()?.name }}</span>
 
