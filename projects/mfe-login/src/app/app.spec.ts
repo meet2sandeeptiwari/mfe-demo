@@ -18,6 +18,6 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, mfe-login');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Login Micro Frontend');
   });
 });
