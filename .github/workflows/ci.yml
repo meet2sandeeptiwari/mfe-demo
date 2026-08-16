@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+    fail-fast: false
       matrix:
         app:
           - shell
@@ -35,6 +36,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # - name: Test ${{ matrix.app }}
+      #   run: npx ng test ${{ matrix.app }} --watch=false --no-progress
 
       - name: Build ${{ matrix.app }}
         run: npx ng build ${{ matrix.app }}
