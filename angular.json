@@ -24,6 +24,7 @@
             "production": {
               "target": "shell:esbuild:production"
             },
+
             "development": {
               "target": "shell:esbuild:development",
               "dev": true
@@ -49,6 +50,7 @@
         },
         "esbuild": {
           "builder": "@angular/build:application",
+
           "options": {
             "browser": "projects/shell/src/main.ts",
             "tsConfig": "projects/shell/tsconfig.app.json",
@@ -62,6 +64,7 @@
             "styles": ["projects/shell/src/styles.scss"],
             "polyfills": ["es-module-shims"]
           },
+
           "configurations": {
             "production": {
               "budgets": [
@@ -76,14 +79,28 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+
+              "outputHashing": "all",
+
+              "fileReplacements": [
+                {
+                  "replace": "projects/shell/environments/environment.ts",
+                  "with": "projects/shell/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "projects/shell/public/federation.manifest.json",
+                  "with": "projects/shell/public/federation.manifest.prod.json"
+                }
+              ]
             },
+
             "development": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
             }
           },
+
           "defaultConfiguration": "production"
         },
         "serve-original": {
@@ -356,7 +373,7 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "buildTarget": "mfe-user:esbuild:development"
+            "buildTarget": "mfe-order:esbuild:development"
           }
         },
         "esbuild": {

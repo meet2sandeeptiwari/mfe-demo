@@ -38,12 +38,48 @@ jobs:
         run: npm ci
 
       - name: Build shell
-        run: npx ng build shell --base-href /mfe-demo/
+        run: npx ng build shell --configuration production --base-href /mfe-demo/
+
+      - name: Build login
+        run: npx ng build mfe-login --configuration production
+
+      - name: Build admin
+        run: npx ng build mfe-admin --configuration production
+
+      - name: Build user
+        run: npx ng build mfe-user --configuration production
+
+      - name: Build product
+        run: npx ng build mfe-product --configuration production
+
+      - name: Build order
+        run: npx ng build mfe-order --configuration production
+
+      - name: Prepare deployment
+        run: |
+          mkdir -p deploy
+
+          cp -R dist/shell/browser/. deploy/
+
+          mkdir -p deploy/mfe-login
+          cp -R dist/mfe-login/browser/. deploy/mfe-login/
+
+          mkdir -p deploy/mfe-admin
+          cp -R dist/mfe-admin/browser/. deploy/mfe-admin/
+
+          mkdir -p deploy/mfe-user
+          cp -R dist/mfe-user/browser/. deploy/mfe-user/
+
+          mkdir -p deploy/mfe-product
+          cp -R dist/mfe-product/browser/. deploy/mfe-product/
+
+          mkdir -p deploy/mfe-order
+          cp -R dist/mfe-order/browser/. deploy/mfe-order/        
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/shell/browser
+          path: deploy
 
       - name: Deploy to GitHub Pages
         id: deployment
