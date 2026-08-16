@@ -28,3 +28,6 @@ jobs:
 
       - name: Build Shell
         run: npx ng build shell
+
+      - name: Build Login MFE
+        run: npx ng build mfe-login  
