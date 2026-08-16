@@ -10,7 +10,7 @@ on:
       - ci-cd-learning
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
 
     strategy:
@@ -37,8 +37,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # - name: Test ${{ matrix.app }}
-      #   run: npx ng test ${{ matrix.app }} --watch=false --no-progress
+      - name: Lint ${{ matrix.app }}
+        run: npx ng lint ${{ matrix.app }}
+
+      - name: Test ${{ matrix.app }}
+        run: npx ng test ${{ matrix.app }} --watch=false --no-progress
 
       - name: Build ${{ matrix.app }}
         run: npx ng build ${{ matrix.app }}

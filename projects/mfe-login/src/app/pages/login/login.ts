@@ -1,11 +1,10 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LoginAuthService } from '../../services/login-auth-service';
 import { LoginRequest, LoginResponse } from '../../models/login.model';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-
   standalone: true,
   imports: [],
   templateUrl: './login.html',
@@ -15,23 +14,12 @@ export class Login {
   email = signal('');
   password = signal('');
 
-  val = signal(false);
-
   private authService = inject(LoginAuthService);
   private router = inject(Router);
 
-  onEmailChange(event: any) {
-    // Handle email input change
-    this.email.set(event.target.value);
-  }
-
-  onPasswordChange(event: any) {
-    // Handle password input change
-    this.password.set(event.target.value);
-  }
-
   login(event: Event) {
     event.preventDefault();
+
     const request: LoginRequest = {
       email: this.email(),
       password: this.password(),
@@ -51,12 +39,15 @@ export class Login {
           if (role === 'admin') {
             this.router.navigate(['/admin']);
           }
+
           if (role === 'user') {
             this.router.navigate(['/users']);
           }
+
           if (role === 'order') {
             this.router.navigate(['/orders']);
           }
+
           if (role === 'product') {
             this.router.navigate(['/products']);
           }

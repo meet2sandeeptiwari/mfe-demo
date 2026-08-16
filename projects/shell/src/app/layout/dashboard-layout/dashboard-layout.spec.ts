@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardLayout } from './dashboard-layout';
+import { provideRouter } from '@angular/router';
 
 describe('DashboardLayout', () => {
   let component: DashboardLayout;
@@ -9,6 +10,7 @@ describe('DashboardLayout', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [DashboardLayout],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DashboardLayout);

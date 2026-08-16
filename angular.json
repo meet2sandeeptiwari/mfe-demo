@@ -42,7 +42,10 @@
           }
         },
         "test": {
-          "builder": "@angular/build:unit-test"
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "shell:esbuild:development"
+          }
         },
         "esbuild": {
           "builder": "@angular/build:application",
@@ -96,6 +99,13 @@
           "defaultConfiguration": "development",
           "options": {
             "port": 4200
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/shell/**/*.ts", "projects/shell/**/*.html"],
+            "eslintConfig": "projects/shell/eslint.config.js"
           }
         }
       }
@@ -191,6 +201,13 @@
           "options": {
             "port": 4202
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/mfe-login/**/*.ts", "projects/mfe-login/**/*.html"],
+            "eslintConfig": "projects/mfe-login/eslint.config.js"
+          }
         }
       }
     },
@@ -284,6 +301,13 @@
           "defaultConfiguration": "development",
           "options": {
             "port": 4201
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/mfe-product/**/*.ts", "projects/mfe-product/**/*.html"],
+            "eslintConfig": "projects/mfe-product/eslint.config.js"
           }
         }
       }
@@ -379,6 +403,13 @@
           "options": {
             "port": 4203
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/mfe-user/**/*.ts", "projects/mfe-user/**/*.html"],
+            "eslintConfig": "projects/mfe-user/eslint.config.js"
+          }
         }
       }
     },
@@ -473,6 +504,13 @@
           "options": {
             "port": 4204
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/mfe-order/**/*.ts", "projects/mfe-order/**/*.html"],
+            "eslintConfig": "projects/mfe-order/eslint.config.js"
+          }
         }
       }
     },
@@ -566,6 +604,13 @@
           "defaultConfiguration": "development",
           "options": {
             "port": 4205
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/mfe-admin/**/*.ts", "projects/mfe-admin/**/*.html"],
+            "eslintConfig": "projects/mfe-admin/eslint.config.js"
           }
         }
       }
