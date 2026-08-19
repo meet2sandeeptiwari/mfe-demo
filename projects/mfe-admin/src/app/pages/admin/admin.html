@@ -1,22 +1,22 @@
-<h2>Admin Dashboards</h2>
+<h2>Admin Dashboard</h2>
 
 @if (dashboard(); as data) {
 
   <p>{{ data.message }}</p>
 
-  <div>
-    <h3>Users</h3>
-    <p>{{ data.data.totalUsers }}</p>
-  </div>
+  <p>
+    Total Users:
+    {{ data.data.totalUsers }}
+  </p>
 
-  <div>
-    <h3>Products</h3>
-    <p>{{ data.data.totalProducts }}</p>
-  </div>
+  <p>
+    Total Products:
+    {{ data.data.totalProducts }}
+  </p>
 
-  <div>
-    <h3>Orders</h3>
-    <p>{{ data.data.totalOrders }}</p>
-  </div>
+  <p>
+    Total Orders:
+    {{ data.data.totalOrders }}
+  </p>
 
 }

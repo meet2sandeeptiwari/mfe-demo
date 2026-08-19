@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 
@@ -21,6 +21,10 @@ export class ShellAuthService {
 
   setUser(user: User) {
     this.currentUser.set(user);
+  }
+
+  isAdmin(): boolean {
+    return this.currentUser()?.role === 'admin';
   }
 
   logout() {

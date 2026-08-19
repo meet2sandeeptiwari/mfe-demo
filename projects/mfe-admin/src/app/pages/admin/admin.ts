@@ -1,5 +1,14 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+
+export interface AdminDashboard {
+  message: string;
+  data: {
+    totalUsers: number;
+    totalProducts: number;
+    totalOrders: number;
+  };
+}
 
 @Component({
   selector: 'app-admin',
@@ -7,19 +16,20 @@ import { AdminService } from '../../services/admin.service';
   templateUrl: './admin.html',
   styleUrl: './admin.scss',
 })
-export class Admin {
+export class Admin implements OnInit {
+
   private adminService = inject(AdminService);
 
-  dashboard = signal<any>(null);
+  dashboard = signal<AdminDashboard | null>(null);
 
   ngOnInit() {
     this.adminService.getAdminWorks().subscribe({
       next: (response) => {
-        console.log('Admin Api Response', response);
+        console.log('Admin API Response', response);
         this.dashboard.set(response);
       },
       error: (error) => {
-        console.error('Admin Api error', error);
+        console.error('Admin API error', error);
       },
     });
   }
