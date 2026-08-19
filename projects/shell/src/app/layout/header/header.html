@@ -6,22 +6,37 @@
 
     <nav>
 
-        <a routerLink="/products" routerLinkActive="active">Products</a>
+        <a routerLink="/products" routerLinkActive="active">
+            Products
+        </a>
 
-        <a routerLink="/users" routerLinkActive="active">Users</a>
+        <a routerLink="/users" routerLinkActive="active">
+            Users
+        </a>
 
-        <a routerLink="/orders" routerLinkActive="active">Orders</a>
+        <a routerLink="/orders" routerLinkActive="active">
+            Orders
+        </a>
 
-        <a routerLink="/admin" routerLinkActive="active">Admin</a>
-        <a routerLink="/login">Login</a>
+        @if (auth.isAdmin()) {
+        <a routerLink="/admin" routerLinkActive="active">
+            Admin
+        </a>
+        }
 
     </nav>
 
     <div class="profile">
 
-        <img src="https://i.pravatar.cc/40" alt="">
+        <img src="https://i.pravatar.cc/40" alt="Profile">
 
-        <span>Welcome {{ auth.currentUser()?.name }}</span>
+        <span>
+            Welcome {{ auth.currentUser()?.email }}
+        </span>
+
+        <button type="button" (click)="logout()">
+            Logout
+        </button>
 
     </div>
 

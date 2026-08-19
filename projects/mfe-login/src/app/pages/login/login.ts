@@ -32,7 +32,11 @@ export class Login {
         if (response.message.success) {
           console.log('Login Success');
 
-          localStorage.setItem('user', JSON.stringify(response));
+          // JWT
+          localStorage.setItem('token', response.message.token);
+
+          // User information
+          localStorage.setItem('user', JSON.stringify(response.message.user));
 
           const role = response.message.user.role;
 
@@ -51,12 +55,6 @@ export class Login {
           if (role === 'product') {
             this.router.navigate(['/products']);
           }
-
-          window.dispatchEvent(
-            new CustomEvent('login-success', {
-              detail: response,
-            }),
-          );
         } else {
           console.log('Invalid Credentials');
         }
