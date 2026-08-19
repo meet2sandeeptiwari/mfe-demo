@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 
@@ -9,11 +9,9 @@ export class ShellAuthService {
 
   currentUser = signal<User | null>(null);
 
-  constructor(private router: Router) {
-    this.loadUser();
-  }
+  private router = inject(Router);
 
-  loadUser() {
+  constructor() {
     const user = localStorage.getItem('user');
 
     if (user) {
@@ -23,10 +21,6 @@ export class ShellAuthService {
 
   setUser(user: User) {
     this.currentUser.set(user);
-  }
-
-  isAdmin(): boolean {
-    return this.currentUser()?.role === 'admin';
   }
 
   logout() {
